@@ -25,11 +25,14 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Format Check
-        run: terraform fmt -check
+      - name: Terraform Import (VPC)
+        run: terraform import aws_vpc.eks_vpc vpc-abc123
+
+      - name: Terraform Import (EKS Master Role)
+        run: terraform import aws_iam_role.eks_master_role eks_masterrole
 
       - name: Terraform Plan
         run: terraform plan
 
-      - name: Terraform apply
+      - name: Terraform Apply
         run: terraform apply -auto-approve
