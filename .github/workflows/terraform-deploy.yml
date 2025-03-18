@@ -26,14 +26,8 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Import (VPC)
-        run: terraform import aws_vpc.eks_vpc
-
-      - name: Terraform Import (EKS Master Role)
-        run: terraform import aws_iam_role.eks_master_role eks_masterrole
-
       - name: Terraform Plan
         run: terraform plan
 
-      - name: Terraform delete
+      - name: Terraform apply
         run: terraform apply -auto-approve
