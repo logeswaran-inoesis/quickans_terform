@@ -16,3 +16,8 @@ output "security_group_id" {
   description = "Control plane security group"
   value       = aws_security_group.eks_control_plane_sg.id
 }
+
+output "eks_master_role_arn" {
+  description = "IAM Role ARN for EKS Master Role"
+  value       = aws_iam_role.eks_master_role.arn
+}
