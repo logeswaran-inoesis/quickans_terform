@@ -13,6 +13,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.TF_USER_AWS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_USER_AWS_SECRET }}
+      AWS_REGION: ap-south-1
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -26,7 +27,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Import (VPC)
-        run: terraform import aws_vpc.eks_vpc vpc-abc123
+        run: terraform import aws_vpc.eks_vpc
 
       - name: Terraform Import (EKS Master Role)
         run: terraform import aws_iam_role.eks_master_role eks_masterrole
