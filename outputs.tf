@@ -5,7 +5,7 @@ output "vpc_id" {
 
 output "subnet_ids" {
   description = "Subnet IDs"
-  value       = [
+  value = [
     aws_subnet.subnet_01.id,
     aws_subnet.subnet_02.id,
     aws_subnet.subnet_03[*].id

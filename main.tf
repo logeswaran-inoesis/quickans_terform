@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-south-1"  # Change as per your requirement
+  region = "ap-south-1" # Change as per your requirement
 }
 
 resource "aws_vpc" "eks_vpc" {
@@ -7,9 +7,9 @@ resource "aws_vpc" "eks_vpc" {
   enable_dns_support   = true
   enable_dns_hostnames = true
 
-tags = {
-  Name = "eks_vpc"
-}
+  tags = {
+    Name = "eks_vpc"
+  }
 }
 
 resource "aws_internet_gateway" "igw" {
@@ -30,9 +30,9 @@ resource "aws_route_table" "public_rt" {
 }
 
 resource "aws_subnet" "subnet_01" {
-  vpc_id                  = aws_vpc.eks_vpc.id
-  cidr_block              = var.subnet01_cidr
-  availability_zone       = data.aws_availability_zones.available.names[0]
+  vpc_id            = aws_vpc.eks_vpc.id
+  cidr_block        = var.subnet01_cidr
+  availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
     Name = "subnet-01"
@@ -40,9 +40,9 @@ resource "aws_subnet" "subnet_01" {
 }
 
 resource "aws_subnet" "subnet_02" {
-  vpc_id                  = aws_vpc.eks_vpc.id
-  cidr_block              = var.subnet02_cidr
-  availability_zone       = data.aws_availability_zones.available.names[1]
+  vpc_id            = aws_vpc.eks_vpc.id
+  cidr_block        = var.subnet02_cidr
+  availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
     Name = "subnet-02"
@@ -50,10 +50,10 @@ resource "aws_subnet" "subnet_02" {
 }
 
 resource "aws_subnet" "subnet_03" {
-  count                   = length(data.aws_availability_zones.available.names) > 2 ? 1 : 0
-  vpc_id                  = aws_vpc.eks_vpc.id
-  cidr_block              = var.subnet03_cidr
-  availability_zone       = data.aws_availability_zones.available.names[2]
+  count             = length(data.aws_availability_zones.available.names) > 2 ? 1 : 0
+  vpc_id            = aws_vpc.eks_vpc.id
+  cidr_block        = var.subnet03_cidr
+  availability_zone = data.aws_availability_zones.available.names[2]
 
   tags = {
     Name = "subnet-03"
