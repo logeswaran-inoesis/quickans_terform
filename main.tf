@@ -1,6 +1,3 @@
-provider "aws" {
-  region = "ap-south-1" # Change as per your requirement
-}
 
 resource "aws_vpc" "eks_vpc" {
   cidr_block           = var.vpc_cidr
@@ -33,7 +30,7 @@ resource "aws_subnet" "subnet_01" {
   vpc_id            = aws_vpc.eks_vpc.id
   cidr_block        = var.subnet01_cidr
   availability_zone = data.aws_availability_zones.available.names[0]
-
+  map_public_ip_on_launch = true
   tags = {
     Name = "subnet-01"
   }
@@ -43,7 +40,7 @@ resource "aws_subnet" "subnet_02" {
   vpc_id            = aws_vpc.eks_vpc.id
   cidr_block        = var.subnet02_cidr
   availability_zone = data.aws_availability_zones.available.names[1]
-
+  map_public_ip_on_launch = true
   tags = {
     Name = "subnet-02"
   }
@@ -54,7 +51,7 @@ resource "aws_subnet" "subnet_03" {
   vpc_id            = aws_vpc.eks_vpc.id
   cidr_block        = var.subnet03_cidr
   availability_zone = data.aws_availability_zones.available.names[2]
-
+  map_public_ip_on_launch = true
   tags = {
     Name = "subnet-03"
   }

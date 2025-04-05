@@ -17,3 +17,9 @@ variable "subnet03_cidr" {
   description = "CIDR for Subnet 03"
   default     = "192.168.192.0/18"
 }
+
+
+
+variable "region" {}
+variable "cluster_name" {}
+variable "kubeconfig_path" {}
