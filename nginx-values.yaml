@@ -1,0 +1,7 @@
+controller:
+  service:
+    loadBalancerIP: 3.108.48.117  # Replace with your Elastic IP
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"  # Specify AWS NLB type
+      service.beta.kubernetes.io/aws-load-balancer-eip-allocations: "eipalloc-09b4dbdcb573abb6f"  # Elastic IP allocation ID
+  type: LoadBalancer

@@ -26,3 +26,4 @@ output "eks_worker_role_arn" {
   description = "ARN of the EKS Worker Node IAM Role"
   value       = aws_iam_role.eks_node_role.arn
 }
+
