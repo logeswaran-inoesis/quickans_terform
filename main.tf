@@ -78,5 +78,10 @@ resource "aws_security_group" "eks_control_plane_sg" {
   description = "Cluster communication with worker nodes"
   vpc_id      = aws_vpc.eks_vpc.id
 }
+resource "kubernetes_namespace" "monitoring" {
+  metadata {
+    name = "monitoring"
+  }
+}
 
 data "aws_availability_zones" "available" {}
